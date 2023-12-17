@@ -1,0 +1,68 @@
+<!-- package_timeline.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Timeline - Code: {{ package.code }}</title>
+    <style>
+        /* CSS for the timeline */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .timeline-item {
+            border-left: 2px solid #ccc;
+            margin: 10px 0;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 3px;
+        }
+
+        .timeline-item:first-child {
+            margin-top: 0;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .time {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Package Timeline - Code: {{ package.code }}</h2>
+
+<div class="timeline">
+    {% for location in locations %}
+        <div class="timeline-item">
+            <span class="time">{{ location.timestamp }}</span>
+            <span class="location">{{ location.location }}</span>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Code</title>
+</head>
+<body>
+    <h2>Enter Your Code</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="code_input">Code:</label>
+        <input type="text" id="code_input" name="code_input">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+

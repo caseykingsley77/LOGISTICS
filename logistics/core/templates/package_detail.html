@@ -1,0 +1,19 @@
+<!-- package_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Package Details - Code: {{ package.code }}</title>
+</head>
+<body>
+    <h2>Package Details - Code: {{ package.code }}</h2>
+    <p>Other details:</p>
+    <ul>
+        <li>Status: {{ package.status }}</li>
+        <li>Recipient Name: {{ package.recipient_name }}</li>
+        <!-- Add other fields as needed -->
+    </ul>
+    <a href="{% url 'generate_package_code' %}">Generate Code for New Package</a>
+</body>
+</html>
