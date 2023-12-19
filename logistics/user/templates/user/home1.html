@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="container">
+    <h2 class="text-white">Enter Your Code</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="input-group">
+            <span class="input-group-text bg-dark text-white">Code:</span>
+            <input type="text" id="code_input" name="code_input" class="form-control bg-dark text-white">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+<style>
+    /* Additional CSS for the dark mode theme */
+    body {
+        background-color: #1c1e21;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 50px auto;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+</style>
+
+</html>

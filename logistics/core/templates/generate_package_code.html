@@ -8,6 +8,17 @@
     <h2>Generate Package Code</h2>
     <form method="post">
         {% csrf_token %}
+        <label for="delivery_date">Delivery Date:</label>
+        <input type="datetime-local" id="delivery_date" name="delivery_date">
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="Out on Delivery">Out on Delivery</option>
+            <option value="Cancelled Delivery">Cancelled Delivery</option>
+            <option value="Arrived for Pickup">Arrived for Pickup</option>
+            <option value="Successfully Delivered">Successfully Delivered</option>
+        </select>
+
         <button type="submit">Generate Code for New Package</button>
     </form>
 </body>

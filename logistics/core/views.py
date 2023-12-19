@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Package, PackageLocation
 import uuid
+from django.utils import timezone
 
 def package_info(request):
     if request.method == 'POST':
@@ -17,12 +18,23 @@ def package_info(request):
 
 def update_package_location(request, package_id):
     if request.method == 'POST':
-        location = request.POST.get('location')
         package = get_object_or_404(Package, pk=package_id)
-        PackageLocation.objects.create(package=package, location=location)
-        return render(request, 'location_updated.html', {'package': package})
 
-    return render(request, 'update_location.html')
+        # Update status
+        new_status = request.POST.get('new_status')
+        package.status = new_status
+
+        # Update location
+        location = request.POST.get('location')
+        PackageLocation.objects.create(package=package, location=location, timestamp=timezone.now())
+
+        # Save the updated status
+        package.save()
+
+        # Redirect to package detail page after updating status and location
+        return redirect('package_detail', package_id=package_id)
+
+    return render(request, 'update_location.html')  # Create/update a form for status and location
 
 
 def package_timeline(request, package_id):
@@ -33,8 +45,19 @@ def package_timeline(request, package_id):
 
 def generate_package_code(request):
     if request.method == 'POST':
-        new_package = Package.objects.create(code=uuid.uuid4())  # Generate a UUID as the package code
+        # Retrieve data from the form
+        delivery_date = request.POST.get('delivery_date')
+        status = request.POST.get('status')
+
+        # Create a new package with UUID as code, delivery date, and status
+        new_package = Package.objects.create(
+            code=str(uuid.uuid4())[:10],
+            delivery_date=delivery_date,
+            status=status
+        )
         new_package.save()
+
+        # Redirect to package detail page
         return redirect('package_detail', package_id=new_package.id)
 
     return render(request, 'generate_package_code.html')
