@@ -1,20 +1,29 @@
-<!-- package_detail.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Package Details - Code: {{ package.code }}</title>
 </head>
-<body>
-    <h2>Package Details - Code: {{ package.code }}</h2>
-    <p>Other details:</p>
-    <ul>
-        <li>Status: {{ package.status }}</li>
-        <li>Date Created: {{ package.date_created }}</li>
-        <li>Delivery Date: {{ package.delivery_date }}</li>
-        <!-- Add other fields as needed -->
-    </ul>
-    <a href="{% url 'generate_package_code' %}">Generate Code for New Package</a>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <h2 class="text-4xl font-bold mb-5">Package Details - Code: {{ package.code }}</h2>
+        <p class="mb-5">Other details:</p>
+        <ul class="bg-white rounded-lg shadow-lg p-5 space-y-2">
+            <li class="text-lg">Status: {{ package.status }}</li>
+            <li class="text-lg">Date Created: {{ package.date_created }}</li>
+            <li class="text-lg">Delivery Date: {{ package.delivery_date }}</li>
+            <!-- Add other fields as needed -->
+        </ul>
+        <div class="mt-10 space-y-5">
+            <a href="{% url 'generate_package_code' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Generate Code for New Package
+            </a>
+            <a href="{% url 'update_package_location' package.id %}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Update Location for {{ package.code }}
+            </a>
+        </div>
+    </div>
 </body>
 </html>

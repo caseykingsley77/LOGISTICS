@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Update Status and Location</title>
 </head>
-<body>
-    <h2>Update Status and Location</h2>
-    <form method="post">
-        {% csrf_token %}
-        <label for="new_status">New Status:</label>
-        <select id="new_status" name="new_status">
-            <option value="Out on Delivery">Out on Delivery</option>
-            <option value="Cancelled Delivery">Cancelled Delivery</option>
-            <option value="Arrived for Pickup">Arrived for Pickup</option>
-            <option value="Successfully Delivered">Successfully Delivered</option>
-        </select>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <h2 class="text-4xl font-bold mb-5">Update Status and Location</h2>
+        <form method="post" class="bg-white rounded-lg shadow-lg p-5 space-y-2">
+            {% csrf_token %}
+            <label for="new_status" class="text-lg font-bold">New Status:</label>
+            <select id="new_status" name="new_status" class="w-full bg-gray-100 text-black p-2 rounded">
+                <option value="Out on Delivery">Out on Delivery</option>
+                <option value="Cancelled Delivery">Cancelled Delivery</option>
+                <option value="Arrived for Pickup">Arrived for Pickup</option>
+                <option value="Successfully Delivered">Successfully Delivered</option>
+            </select>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location">
+            <label for="location" class="text-lg font-bold">Location:</label>
+            <input type="text" id="location" name="location" class="w-full bg-gray-100 text-black p-2 rounded">
 
-        <button type="submit">Update Status and Location</button>
-    </form>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Update Status and Location
+            </button>
+        </form>
+    </div>
 </body>
 </html>

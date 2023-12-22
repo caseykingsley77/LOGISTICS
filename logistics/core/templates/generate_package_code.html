@@ -2,24 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Generate Package Code</title>
 </head>
-<body>
-    <h2>Generate Package Code</h2>
-    <form method="post">
-        {% csrf_token %}
-        <label for="delivery_date">Delivery Date:</label>
-        <input type="datetime-local" id="delivery_date" name="delivery_date">
+<body class="bg-gray-100">
+    <div class="container mx-auto my-10">
+        <h2 class="text-4xl font-bold mb-5">Generate Package Code</h2>
+        <form method="post" class="bg-white rounded-lg shadow-lg p-5 space-y-2">
+            {% csrf_token %}
+            <label for="delivery_date" class="text-lg font-bold">Delivery Date:</label>
+            <input type="datetime-local" id="delivery_date" name="delivery_date" class="w-full bg-gray-100 text-black p-2 rounded">
 
-        <label for="status">Status:</label>
-        <select id="status" name="status">
-            <option value="Out on Delivery">Out on Delivery</option>
-            <option value="Cancelled Delivery">Cancelled Delivery</option>
-            <option value="Arrived for Pickup">Arrived for Pickup</option>
-            <option value="Successfully Delivered">Successfully Delivered</option>
-        </select>
+            <label for="status" class="text-lg font-bold">Status:</label>
+            <select id="status" name="status" class="w-full bg-gray-100 text-black p-2 rounded">
+                <option value="Out on Delivery">Out on Delivery</option>
+                <option value="Cancelled Delivery">Cancelled Delivery</option>
+                <option value="Arrived for Pickup">Arrived for Pickup</option>
+                <option value="Successfully Delivered">Successfully Delivered</option>
+            </select>
 
-        <button type="submit">Generate Code for New Package</button>
-    </form>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Generate Code for New Package
+            </button>
+        </form>
+    </div>
 </body>
 </html>
